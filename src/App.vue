@@ -1,30 +1,44 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+
+import pizze from './data/pizze'
+import CardPizza from './components/CardPizza.vue';
+
+export default {
+  name : 'App',
+
+
+  data (){
+    return {
+      pizze
+    }
+  },
+
+  components : {
+    CardPizza
+  },
+
+  created (){
+    console.log(this.pizze);
+  }
+
+}
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+
+
+  <div class="container my-5 ">
+    <div class="row">
+      <CardPizza v-for = "(pizza, index) in pizze" :key = "index" :pizzaObj="pizza"/>
+      
+    </div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss">
+
+@import 'bootstrap/scss/bootstrap';
+
 </style>
